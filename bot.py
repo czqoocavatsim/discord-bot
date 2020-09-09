@@ -6,19 +6,16 @@ import os
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 
-bot = commands.Bot(command_prefix='?')
+bot = commands.Bot(command_prefix='czqo?')
 
 @bot.event
 async def on_ready():
     print ("Starting up")
-    activity = discord.Activity(name="the HF radios", type=discord.ActivityType.listening)
+    activity = discord.Activity(name="the HF radio", type=discord.ActivityType.listening)
     await bot.change_presence(activity=activity)
 
-@bot.command()
-async def ping(ctx):
-    await ctx.send(":ping_pong: Ping, pong! {0}ms".format(round(bot.latency, 1)))
-
 @bot.command(hidden=True)
+@commands.has_permissions(administrator=True)
 async def send_rules_resources(ctx):
     embed1 = discord.Embed(title="**Rules**", colour=discord.Colour(0x80c9))
 
@@ -48,5 +45,20 @@ async def send_rules_resources(ctx):
     embed4.set_image(url="https://cdn.discordapp.com/attachments/681071305394749458/752813169470341140/unknown.png")
 
     await ctx.send(embed=embed4)
+
+
+@bot.command(hidden=True)
+@commands.has_permissions(administrator=True)
+async def send_tim_hortons_msg(ctx):
+    await ctx.send("Hey stranger! If you can see this message, then you haven't yet linked your discord account with Gander Oceanic. You can do so on your dashboard :grin:: https://ganderoceanic.com/dashboard")
+
+@bot.command(hidden=True)
+@commands.has_permissions(administrator=True)
+async def admin_commands(ctx):
+    embed = discord.Embed(title="**Admin Commands**", colour=discord.Colour(0x80c9))
+    embed.add_field(inline=False, name="czqo?send_rules_resources", value="Posts rules+resources embeds")
+    embed.add_field(inline=False, name="czqo?send_tim_hortons_msg", value="Sends #tim-hortons explanation message")
+
+    await ctx.send(embed=embed)
 
 bot.run(TOKEN)

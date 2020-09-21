@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 from dotenv import load_dotenv
-import os
+import os, requests, json
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
@@ -58,6 +58,27 @@ async def admin_commands(ctx):
     embed = discord.Embed(title="**Admin Commands**", colour=discord.Colour(0x80c9))
     embed.add_field(inline=False, name="czqo?send_rules_resources", value="Posts rules+resources embeds")
     embed.add_field(inline=False, name="czqo?send_tim_hortons_msg", value="Sends #tim-hortons explanation message")
+
+    await ctx.send(embed=embed)
+
+@bot.command()
+async def solocerts(ctx):
+    waiting = await ctx.send("Working on it...")
+
+    endpoint = os.getenv("SOLO_CERTS_ENDPOINT")
+    response = requests.get(endpoint)
+
+    if len(response.json()) == 0:
+        await waiting.delete()
+        await ctx.send("No solo certifications active")
+        return
+
+    embed = discord.Embed(title="**Solo Certifications**", colour=discord.Colour(0x80c9))
+
+    for cert in response.json():
+        embed.add_field(inline=False, name="**{0}**".format(cert['roster_member']['cid']), value="Expires {0}".format(cert['expires']))
+
+    await waiting.delete()
 
     await ctx.send(embed=embed)
 

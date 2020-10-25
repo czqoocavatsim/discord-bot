@@ -13,7 +13,7 @@ async def on_ready():
     print ("Starting up")
     activity = discord.Activity(name="the HF radio", type=discord.ActivityType.listening)
     await bot.change_presence(activity=activity)
-    channel = client.get_channel(482860026831175690)
+    channel = bot.get_channel(482860026831175690)
     await channel.send('Hello! Starting...')
 
 @bot.command(hidden=True)

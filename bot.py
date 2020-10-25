@@ -13,6 +13,8 @@ async def on_ready():
     print ("Starting up")
     activity = discord.Activity(name="the HF radio", type=discord.ActivityType.listening)
     await bot.change_presence(activity=activity)
+    channel = client.get_channel(482860026831175690)
+    await channel.send('Hello! Starting...')
 
 @bot.command(hidden=True)
 @commands.has_permissions(administrator=True)
@@ -20,7 +22,7 @@ async def send_rules_resources(ctx):
     embed1 = discord.Embed(title="**Rules**", colour=discord.Colour(0x80c9))
 
     embed1.add_field(inline=False, name="Discord Terms of Service & Community Guidelines", value="All members must follow Discord's Community Guidelines and Terms of Service at all times.\nToS — https://discordapp.com/terms\nGuidelines — https://discordapp.com/guidelines")
-    embed1.add_field(inline=False, name="VATSIM Code of Conduct Applies", value="The VATSIM CoC applies at all times on all Gander Ocenaic communication platforms.\nhttps://www.vatsim.net/documents/code-of-conduct")
+    embed1.add_field(inline=False, name="VATSIM Code of Conduct Applies", value="The VATSIM CoC applies at all times on all Gander Oceanic communication platforms.\nhttps://www.vatsim.net/documents/code-of-conduct")
     embed1.add_field(inline=False, name="Always show respect and common decency to fellow members", value="We aim to be a community where all people can feel they belong. Therefore, we ask that you show respect to each other at all times. This ties into Article A1 of the Code of Conduct.")
     embed1.add_field(inline=False, name="Server invites", value="We ask that you not send invites to Discord servers unrelated to VATSIM with the permission of a staff member. Invites to servers related to the VATSIM community are permitted. Do not send **ANY** invites via DMs unless the person requests it.")
     embed1.add_field(inline=False, name="Spam, including images, text, or emotes.", value="Do not send spam in the server, including images, text, or emotes. ")

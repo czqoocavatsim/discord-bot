@@ -33,7 +33,7 @@ async def send_rules_resources(ctx):
     embed2 = discord.Embed(title="**Resources**", colour=discord.Colour(0x80c9))
 
     embed2.add_field(inline=False, name="Pilot Tools", value="Check out pilot tools including oceanic clearance/position report assists, natTRAK, and a map of current NAT tracks here:\nhttps://ganderoceanic.com/pilots/")
-    embed2.add_field(inline=False, name="Policies", value="Find all Gander Ocenaic policies here, including currency policies for controllers:\nhttps://ganderoceanic.com/policies")
+    embed2.add_field(inline=False, name="Policies", value="Find all Gander Oceanic policies here, including currency policies for controllers:\nhttps://ganderoceanic.com/policies")
     embed2.add_field(inline=False, name="Feedback", value="Have some feedback on how we're doing? Let us know here:\nhttps://vats.im/czqofeedback")
 
     await ctx.send(embed=embed2)

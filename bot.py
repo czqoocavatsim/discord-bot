@@ -2,10 +2,11 @@ import discord
 from discord.ext import commands
 from dotenv import load_dotenv
 import os, requests, json
+from datetime import datetime
+import math
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
-
 bot = commands.Bot(command_prefix='czqo?')
 
 @bot.event
@@ -83,5 +84,15 @@ async def solocerts(ctx):
     await waiting.delete()
 
     await ctx.send(embed=embed)
+
+@bot.command()
+async def ping(ctx):
+    now = datetime.utcnow()
+
+    nowTime = datetime.timestamp(now)
+    reqTime = datetime.timestamp(ctx.message.created_at)
+    
+    ping = math.floor(nowTime - reqTime )* 1000
+    await ctx.send("🏓Ping, pong!  {}ms".format(ping))
 
 bot.run(TOKEN)

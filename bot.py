@@ -150,7 +150,7 @@ async def notify_atc():
 
     for controller in vatsimData:
         if controller not in newControllerList:
-            embed = discord.Embed(title="An oceanic controller went online!",
+            embed = discord.Embed(title="An oceanic controller went offline!",
                                   colour=discord.Colour(0x80c9))
 
             embed.add_field(inline=False, name="{} is now offline!".format(controller),

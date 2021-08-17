@@ -144,7 +144,7 @@ async def notify_atc():
                                   colour=discord.Colour(0x80c9))
 
             embed.add_field(inline=False, name="{} is now online!".format(controller),
-                            value="They have went online at **{0}** and will be providing service on **{1}**".format(datetime.utcnow().strftime('%d.%m.%Y %H:%M z'), full_controller_data[0]['frequency']))
+                            value="They went online at **{0}** and will be providing service on **{1}**".format(datetime.utcnow().strftime('%d.%m.%Y %H:%M z'), full_controller_data[0]['frequency']))
 
             await channel.send(embed=embed)
 
@@ -154,7 +154,7 @@ async def notify_atc():
                                   colour=discord.Colour(0x80c9))
 
             embed.add_field(inline=False, name="{} is now offline!".format(controller),
-                            value="They have went offline at **{0}**".format(datetime.utcnow().strftime('%d.%m.%Y %H:%M z')))
+                            value="They went offline at **{0}**".format(datetime.utcnow().strftime('%d.%m.%Y %H:%M z')))
 
             await channel.send(embed=embed)
 

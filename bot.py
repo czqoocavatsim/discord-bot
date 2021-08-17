@@ -123,7 +123,7 @@ async def ping(ctx):
     await ctx.send("🏓Ping, pong!  {}ms".format(ping))
 
 
-@tasks.loop(seconds=60)
+@tasks.loop(seconds=300)
 async def notify_atc():
     channel_id = os.getenv("ATC_ONLINE_CHANNEL")
     dataFeedUrl = os.getenv("DATA_FEED_URL")

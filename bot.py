@@ -133,7 +133,7 @@ async def notify_atc():
     newControllerList = []
 
     for controller in newVatsimData.json()['controllers']:
-        if (controller['callsign'].startswith('CZQO_') or controller['callsign'].startswith('EGGX_') or controller['callsign'].startswith('NAT_') and (controller['callsign'].endswith('_CTR') or controller['callsign'].endswith('_DEL') or controller['callsign'].endswith('_FSS'))):
+        if (controller['callsign'].startswith('CZQO_') or controller['callsign'].startswith('EGGX_') or controller['callsign'].startswith('NAT_')) and (controller['callsign'].endswith('_CTR') or controller['callsign'].endswith('_DEL') or controller['callsign'].endswith('_FSS')):
             newControllerList.append(controller['callsign'])
 
     for controller in newControllerList:
@@ -144,7 +144,7 @@ async def notify_atc():
                                   colour=discord.Colour(0x80c9))
 
             embed.add_field(inline=False, name="{} is now online!".format(controller),
-                            value="They went online at **{0}** and will be providing service on **{1}**".format(datetime.utcnow().strftime('%d.%m.%Y %H:%M z'), full_controller_data[0]['frequency']))
+                            value="{0} came online at **{1}** and will be providing service on **{2}**".format(full_controller_data[0]['name'], datetime.utcnow().strftime('%d.%m.%Y %H:%M z'), full_controller_data[0]['frequency']))
 
             await channel.send(embed=embed)
 

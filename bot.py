@@ -133,7 +133,7 @@ async def notify_atc():
     newControllerList = []
 
     for controller in newVatsimData.json()['controllers']:
-        if (controller['callsign'].startswith('CZQO_') or controller['callsign'].startswith('EGGX_')) or controller['callsign'].startswith('NAT_')) and (controller['callsign'].endswith('_CTR') or controller['callsign'].endswith('_DEL') or controller['callsign'].endswith('_FSS')):
+        if (controller['callsign'].startswith('CZQO_') or controller['callsign'].startswith('EGGX_') or controller['callsign'].startswith('NAT_') and (controller['callsign'].endswith('_CTR') or controller['callsign'].endswith('_DEL') or controller['callsign'].endswith('_FSS')):
             newControllerList.append(controller['callsign'])
 
     for controller in newControllerList:

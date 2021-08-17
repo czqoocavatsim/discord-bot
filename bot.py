@@ -72,7 +72,7 @@ async def send_rules_resources(ctx):
 @bot.command(hidden=True)
 @commands.has_permissions(administrator=True)
 async def send_tim_hortons_msg(ctx):
-    await ctx.send("Hey stranger! If you can see this message, then you haven't yet linked your discord account with Gander Oceanic. You can do so on your dashboard :grin:: https://ganderoceanic.com/dashboard")
+    await ctx.send("Hey stranger! If you can see this message, then you haven't yet linked your discord account with Gander Oceanic. You can do so on your myCZQO :grin:: https://ganderoceanic.ca/my")
 
 
 @bot.command(hidden=True)
@@ -133,7 +133,7 @@ async def notify_atc():
     newControllerList = []
 
     for controller in newVatsimData.json()['controllers']:
-        if (controller['callsign'].startswith('CZQX_') or controller['callsign'].startswith('EGGX_')) and (controller['callsign'].endswith('_FSS') or controller['callsign'].endswith('_DEL')):
+        if (controller['callsign'].startswith('CZQO_') or controller['callsign'].startswith('EGGX_')) or controller['callsign'].startswith('NAT_')) and (controller['callsign'].endswith('_CTR') or controller['callsign'].endswith('_DEL') or controller['callsign'].endswith('_FSS')):
             newControllerList.append(controller['callsign'])
 
     for controller in newControllerList:
